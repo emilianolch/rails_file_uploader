@@ -1,0 +1,14 @@
+<div id="<%= dom_id folder %>">
+  <p>
+    <strong>Name:</strong>
+    <%= folder.name %>
+  </p>
+
+  <p>
+    <strong>Files:</strong>
+    <% folder.files.each do |file| %>
+      <div><%= link_to file.filename, file %></div>
+    <% end %>
+  </p>
+
+</div>
