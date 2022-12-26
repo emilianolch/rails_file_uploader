@@ -7,7 +7,12 @@
   <p>
     <strong>Files:</strong>
     <% folder.files.each do |file| %>
-      <div><%= link_to file.filename, file %></div>
+      <div>
+        <%= link_to file.filename, file %>
+        <%= button_to 'Delete', attachment_path(file), 
+            method: :delete,
+            form: {"data-turbo-confirm": "Delete #{file.filename}?"} %>
+      </div>
     <% end %>
   </p>
 

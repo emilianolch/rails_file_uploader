@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :folders
+  resources :attachments, only: :destroy
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root "folders#index"
+  root 'folders#index'
 end
