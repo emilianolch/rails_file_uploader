@@ -24,23 +24,21 @@ class FoldersController < ApplicationController
     respond_to do |format|
       if @folder.save
         format.html { redirect_to folder_url(@folder), notice: 'Folder was successfully created.' }
-        format.json { render :show, status: :created, location: @folder }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @folder.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # PATCH/PUT /folders/1 or /folders/1.json
   def update
+    @folder.files.attach(folder_params[:files])
+
     respond_to do |format|
-      if @folder.update(folder_params)
+      if @folder.update(folder_params.except(:files))
         format.html { redirect_to folder_url(@folder), notice: 'Folder was successfully updated.' }
-        format.json { render :show, status: :ok, location: @folder }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @folder.errors, status: :unprocessable_entity }
       end
     end
   end

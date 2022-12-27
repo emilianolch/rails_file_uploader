@@ -20,8 +20,3 @@ module FileUploader
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
-
-Rails.application.configure do
-  # Prevents overriding the existing attachments
-  config.active_storage.replace_on_assign_to_many = false
-end
